@@ -1,2 +1,2 @@
 # DKC2-Practice-Edition
- A practice romhack for DKC2 with level select and fast retry features
+ Source code for the DKC2 practice hack with level select and fast retry features
