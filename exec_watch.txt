@@ -1,0 +1,2 @@
+"Music cmd FC", 0xB581C2
+"Music cmd FD", 0xB581CE

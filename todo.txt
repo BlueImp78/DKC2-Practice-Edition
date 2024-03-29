@@ -1,0 +1,97 @@
+bank_BB.asm:7379: CODE_BBC18A:	JMP ($0002,x)
+bank_B5.asm:9296: CODE_B5E2B8:	JMP ($0034)
+bank_B5.asm:9304: CODE_B5E2CC:	JMP ($0034)
+bank_B5.asm:11142: CODE_B5F1BB:	JMP ($0036)
+bank_B6.asm:7901: CODE_B6D549:	JMP ($0052,x)
+bank_80.asm:1355: CODE_808EE7:	JMP ($0032)
+bank_80.asm:386: CODE_808613:	JMP ($0024)
+bank_80.asm:11450: CODE_80F3E3:	JMP ($0020)
+bank_B4.asm:6670: CODE_B4BE60:	JMP ($067D)
+bank_B9.asm:2766: CODE_B9D14C:	JMP ($0026)
+bank_B9.asm:2806: CODE_B9D186:	JMP ($0026)
+bank_B9.asm:2835: CODE_B9D1B2:	JMP ($0026)
+bank_B9.asm:2886: CODE_B9D208:	JMP ($0026)
+bank_B9.asm:2912: CODE_B9D231:	JMP ($0026)
+
+
+
+CODE_BBC18A
+DATA_BAB6A1
+
+
+38/3A DMA source bank (from decompression?)
+
+CODE_B582A9	;possibly camera related
+
+CODE_B3A306
+CODE_B3CE38
+
+DATA_B4C4B3
+DATA_B4C25E ;check where the data it points to points
+CODE_B4AA36 ;investigate all 079C instances
+
+(CODE_BB8E59|CODE_80F326|CODE_80CC41|CODE_80A8CE)
+
+DATA_80A866  investigate for pointers
+DATA_B6AE73  very suspicious
+DATA_B6E08F same
+
+CODE_B38324  interesting sprite thing
+
+CODE_80B89C  find DMA trigger
+
+CODE_B3D59F  check for label
+CODE_B5F742  really mean pointers to decode
+
+CODE_BBBE01  Figure out how to represent this
+CODE_B6D298  Still needs investigating
+
+CODE_808FFC  fixme, plus movement buffer probably
+
+
+DATA_FD6044
+DATA_FD61C2  <--animated
+DATA_FD616E
+DATA_FD6170
+DATA_FD616E
+
+DATA_FD470D  consider offset macro?
+
+
+if !version == 0
+	dw !boss_command_19, $AF04, $AF34
+else
+	dw !boss_command_19, $AEE0, $AF10
+endif
+
+
+if !version == 0			;		 |
+	LDA #$B4C8			;$BA9CAD	 |
+else					;		 |
+	LDA #$B413			;$BA9CAD	 |
+endif					;		 |
+	BRA CODE_BA9CB5			;$BA9CB0	/
+
+CODE_BA9CB2:
+if !version == 0			;		\
+	LDA #$B2A2			;$BA9CB2	 |
+else					;		 |
+	LDA #$B1ED			;$BA9CB2	 |
+endif					;		 |
+
+
+if !version == 1			;		 |
+	LDX #$A40F			;$80D057	 |
+else					;		 |
+	LDX #$A402			;$80D057	 |
+endif					;		 |
+	LDA $2A				;$80D05A	 |
+	BIT #$0001			;$80D05C	 |
+	BEQ CODE_80D064			;$80D05F	 |
+if !version == 0			;		 |
+	LDX #$A3FB			;$80D061	 |
+else					;		 |
+	LDX #$A408			;$80D061	 |
+endif
+
+handle 16FC
